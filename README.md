@@ -7,3 +7,5 @@ This is a very simple package for easily saving and loading objects to XML with 
 To load an object, use
 
     var x = XmlSerializerHelper.Load<T>("{some filename}");
+
+Install via nuget package **AoXmlSerializer**.
