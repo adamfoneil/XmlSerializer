@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Xml.Serialization;
 
 namespace AdamOneilSoftware
@@ -16,7 +17,30 @@ namespace AdamOneilSoftware
             return result;
         }
 
-        public static void Save<T>(T @object, string fileName, bool createFolder = true)
+        public static bool TryLoad<T>(string fileName, out T result)
+        {
+            Exception exc;
+            return TryLoad<T>(fileName, out result, out exc);
+        }
+
+        public static bool TryLoad<T>(string fileName, out T result, out Exception exception)
+        {
+            result = default(T);
+            exception = null;
+
+            try
+            {
+                result = Load<T>(fileName);
+                return true;
+            }
+            catch (Exception exc)
+            {
+                exception = exc;
+                return false;
+            }
+        }
+
+        public static void Save(object @object, string fileName, bool createFolder = true)
         {
             if (createFolder)
             {
@@ -24,7 +48,7 @@ namespace AdamOneilSoftware
                 if (!Directory.Exists(folder)) Directory.CreateDirectory(folder);
             }
 
-            XmlSerializer xs = new XmlSerializer(typeof(T));
+            XmlSerializer xs = new XmlSerializer(@object.GetType());
             using (StreamWriter writer = File.CreateText(fileName))
             {
                 xs.Serialize(writer, @object);
