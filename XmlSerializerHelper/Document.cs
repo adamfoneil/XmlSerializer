@@ -18,8 +18,10 @@ namespace AdamOneilSoftware
         public event PropertyChangedEventHandler PropertyChanged;
 
         [XmlIgnore]
+        [Browsable(false)]
         public string Filename { get; protected set; }
         [XmlIgnore]
+        [Browsable(false)]
         public bool IsModified { get; protected set; }
 
         // thanks to http://stackoverflow.com/questions/2246777/raise-an-event-whenever-a-propertys-value-changed
@@ -58,10 +60,12 @@ namespace AdamOneilSoftware
         {
             var doc = XmlSerializerHelper.Load<T>(fileName);
             doc.Filename = fileName;
+            doc.IsModified = false;
             return doc;
         }
 
         [XmlIgnore]
+        [Browsable(false)]
         public FilenamePromptHandler FilenamePrompt { get; set; }
 
         public bool SaveAs(string fileName)
