@@ -9,6 +9,8 @@ using System.Xml.Serialization;
 
 namespace AdamOneilSoftware
 {
+    public delegate bool FilenamePromptHandler(out string fileName);
+
     public abstract class Document : INotifyPropertyChanged
     {
         private Dictionary<string, object> _values = new Dictionary<string, object>();
@@ -59,6 +61,9 @@ namespace AdamOneilSoftware
             return doc;
         }
 
+        [XmlIgnore]
+        public FilenamePromptHandler FilenamePrompt { get; set; }
+
         public bool SaveAs(string fileName)
         {
             Filename = Filename;
@@ -69,8 +74,10 @@ namespace AdamOneilSoftware
         {
             if (string.IsNullOrEmpty(Filename))
             {
+                if (FilenamePrompt == null) throw new InvalidOperationException("A FilenamePrompt delegate is requireed.");
+
                 string fileName;
-                if (GetFilename(out fileName))
+                if (FilenamePrompt.Invoke(out fileName))
                 {
                     Filename = fileName;
                 }
@@ -83,8 +90,6 @@ namespace AdamOneilSoftware
             XmlSerializerHelper.Save(this, Filename, createFolder);
             IsModified = false;
             return true;
-        }
-
-        protected abstract bool GetFilename(out string fileName);        
+        }        
     }
 }
