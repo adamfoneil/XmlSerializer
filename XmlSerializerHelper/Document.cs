@@ -59,17 +59,10 @@ namespace AdamOneilSoftware
             return doc;
         }
 
-        public bool SaveAs()
+        public bool SaveAs(string fileName)
         {
-            string fileName;
-            if (GetFilename(out fileName))
-            {
-                return Save();
-            }
-            else
-            {
-                return false;
-            }
+            Filename = Filename;
+            return Save();            
         }
 
         public bool Save(bool createFolder = true)
