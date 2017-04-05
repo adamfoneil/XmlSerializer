@@ -70,7 +70,7 @@ namespace AdamOneilSoftware
 
         public bool SaveAs(string fileName)
         {
-            Filename = Filename;
+            Filename = fileName;
             return Save();            
         }
 
