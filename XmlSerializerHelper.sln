@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XmlSerializerHelper", "XmlS
 EndProject
 Project("{FF286327-C783-4F7A-AB73-9BCBAD0D4460}") = "Nuget", "Nuget\Nuget.nuproj", "{EBA1B479-7B47-462C-AE82-852C5A39482A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{903AD4BF-C80F-4B4D-B166-8BF11859D700}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{EBA1B479-7B47-462C-AE82-852C5A39482A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EBA1B479-7B47-462C-AE82-852C5A39482A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EBA1B479-7B47-462C-AE82-852C5A39482A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{903AD4BF-C80F-4B4D-B166-8BF11859D700}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{903AD4BF-C80F-4B4D-B166-8BF11859D700}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{903AD4BF-C80F-4B4D-B166-8BF11859D700}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{903AD4BF-C80F-4B4D-B166-8BF11859D700}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
