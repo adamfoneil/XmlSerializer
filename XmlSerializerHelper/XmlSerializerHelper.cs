@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Xml;
 using System.Xml.Serialization;
 
 namespace AdamOneilSoftware
@@ -52,6 +53,21 @@ namespace AdamOneilSoftware
             using (StreamWriter writer = File.CreateText(fileName))
             {
                 xs.Serialize(writer, @object);
+            }
+        }
+
+        public static string ToXml<T>(T @object)
+        {
+            // thanks to https://stackoverflow.com/questions/4123590/serialize-an-object-to-xml
+
+            XmlSerializer xs = new XmlSerializer(typeof(T));
+            using (var sw = new StringWriter())
+            {
+                using (var xw = XmlWriter.Create(sw))
+                {
+                    xs.Serialize(xw, @object);
+                    return sw.ToString();
+                }
             }
         }
     }
