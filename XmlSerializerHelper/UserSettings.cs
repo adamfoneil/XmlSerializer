@@ -36,9 +36,14 @@ namespace AdamOneilSoftware
 			return result;
 		}		
 
-		~UserSettings()
+		public void Save()
 		{
 			XmlSerializerHelper.Save(this, GetFilename(CompanyName, ProductName));
+		}
+
+		~UserSettings()
+		{
+			Save();
 		}
 	}
 }
