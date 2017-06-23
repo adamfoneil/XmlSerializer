@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AdamOneilSoftware;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,17 +11,24 @@ namespace Test
     {
         static void Main(string[] args)
         {
-            /*var doc = SampleDoc.Load<SampleDoc>(@"C:\Users\Adam\Desktop\hello.xml");
+			/*var doc = SampleDoc.Load<SampleDoc>(@"C:\Users\Adam\Desktop\hello.xml");
             Console.WriteLine(doc.FirstName);
             Console.WriteLine(doc.LastName);
             Console.WriteLine(doc.BirthDate);
             Console.ReadLine();*/
 
-            var doc = new SampleDoc();
+			/*var doc = new SampleDoc();
             doc.PropertyChanged += Doc_PropertyChanged;
             doc.FirstName = "whatever";
             doc.LastName = "this thing";
-            doc.BirthDate = DateTime.Today;
+            doc.BirthDate = DateTime.Today;*/
+
+			var settings = UserSettings.Load<Settings>("Adam O'Neil Software", "XmlSerializerHelper");
+			//settings.Greeting = "hello";
+			//settings.Farewell = "good-bye";
+
+			Console.Write($"greeting = {settings.Greeting}, farewell = {settings.Farewell}");
+
             Console.ReadLine();
         }
 

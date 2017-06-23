@@ -1,0 +1,15 @@
+﻿using AdamOneilSoftware;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Test
+{
+	public class Settings : UserSettings
+	{
+		public string Greeting { get; set; }
+		public string Farewell { get; set; }
+	}
+}
